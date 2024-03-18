@@ -138,6 +138,7 @@ class SegLocalVisualizer(Visualizer):
         mask = np.zeros_like(image, dtype=np.uint8)
         for label, color in zip(labels, colors):
             mask[sem_seg[0] == label, :] = color
+        mask = np.ascontiguousarray(mask, dtype=np.uint8)
 
         if withLabels:
             font = cv2.FONT_HERSHEY_SIMPLEX
